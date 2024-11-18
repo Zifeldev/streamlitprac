@@ -1,6 +1,6 @@
 import streamlit as st
 
-class Home:
+class Project2:
     def __init__(self):
         pass
     def app(self):
