@@ -1,16 +1,16 @@
 import streamlit as st
-import os
+from Pages import Home, Project1, Project2, Project3
 from streamlit_navigation_bar import st_navbar as navbar
-from Pages import Home, Project1, Project2 , Project3
-from PIL import  Image
+import os
+from PIL import Image
 import pandas as pd
 import numpy as np
 
 image = Image.open('img/logo.jpeg')
-st.set_page_config(initial_sidebar_state="collapsed")
+st.set_page_config(initial_sidebar_state="collapsed", page_icon=image)
 
 logo_path = os.path.join(os.path.dirname(__file__), "img", "dino.svg")
-pages = ["Home","Project1","Project2","Project3"]
+pages = [" ",'Home','Project1', 'Project2', 'Project3']
 
 styles = {
     "nav": {
@@ -20,11 +20,11 @@ styles = {
     },
     "img": {
         "position": "absolute",
-        "left": "-20px",
+        "left": "-10px",
         "font-size": "15px",
         "top": "4px",
-        "width": "100px",
-        "height": "40px",
+        "width": "110px",
+        "height": "50px",
     },
     "div":{
         "max-width":"32rem",
@@ -37,14 +37,21 @@ styles = {
     },
     "active":{
         "background-color":"rgba(155,114,255,0.25)",
+        "color": "black",
+        "font-weight": "normal",
+        "padding": "14px",
     },
     "hover":{
         "background-color":"rgba(255,255,255,0.35)",
     },
 }
+options = {
+    "show_menu": False,
+    "show_sidebar": True,
+}
 
 
-page = navbar(pages, styles=styles)
+page = navbar(pages, styles=styles, logo_path=logo_path, options=options)
 
 if page == 'Home':
     Home.Home().app()
